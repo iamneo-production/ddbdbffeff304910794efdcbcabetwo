@@ -23,7 +23,7 @@ const checkWin = ()=>{
     wins.forEach(e=>{
 
         if(boxtexts[e[0]].innerText===boxtexts[e[1]].innerText && boxtexts[e[1]].innerText===boxtexts[e[2]].innerText && boxtexts[e[0]].innerText!==""){
-            document.querySelector(".info").innerText=boxtexts[e[0]].innerText+" Won";
+            document.querySelector(".result").innerText=boxtexts[e[0]].innerText+" Won";
             go=true;
            
         }
@@ -43,7 +43,7 @@ Array.from(boxes).forEach(element=>{
             
             checkWin();
             if(!go){
-                document.getElementsByClassName("info")[0].innerText="Turn for "+turn;
+                document.getElementsByClassName("result")[0].innerText="Player "+turn+" Turn";
             }
             
         }
@@ -57,7 +57,7 @@ reset.addEventListener("click",()=>{
         element.innerText="";
     });
     turn="X";
-    document.getElementsByClassName("info")[0].innerText="Turn for "+turn;
+    document.getElementsByClassName("result")[0].innerText="Player "+turn+" Turn";
     go=false;
     
 
