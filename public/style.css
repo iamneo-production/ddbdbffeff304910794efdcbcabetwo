@@ -20,6 +20,12 @@ body {
     font-family: 'Roboto Condensed', sans-serif;
 }
 
+h1{
+    text-align: center;
+    color:white;
+    font-size
+}
+
 
 nav{
     background-color: rgb(65, 0, 0);
