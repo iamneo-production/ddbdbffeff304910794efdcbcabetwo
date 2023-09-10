@@ -40,7 +40,7 @@ Array.from(boxes).forEach(element=>{
         if(boxtext.innerText === ""){
             boxtext.innerText=turn;
             turn = changeTurn();
-            audioTurn.play();
+            
             checkWin();
             if(!go){
                 document.getElementsByClassName("info")[0].innerText="Turn for "+turn;
@@ -59,6 +59,6 @@ reset.addEventListener("click",()=>{
     turn="X";
     document.getElementsByClassName("info")[0].innerText="Turn for "+turn;
     go=false;
-    document.querySelector(".imgbox").getElementsByTagName("img")[0].style.width="0px";
+    
 
 })
