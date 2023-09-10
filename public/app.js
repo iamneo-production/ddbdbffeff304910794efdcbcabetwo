@@ -23,7 +23,7 @@ const checkWin = ()=>{
     wins.forEach(e=>{
 
         if(boxtexts[e[0]].innerText===boxtexts[e[1]].innerText && boxtexts[e[1]].innerText===boxtexts[e[2]].innerText && boxtexts[e[0]].innerText!==""){
-            document.querySelector(".result").innerText=boxtexts[e[0]].innerText+" Won";
+            document.querySelector(".result").innerText="Player "+boxtexts[e[0]].innerText+" Won";
             go=true;
            
         }
