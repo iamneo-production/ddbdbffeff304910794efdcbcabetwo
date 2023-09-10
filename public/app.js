@@ -1,64 +1,66 @@
-// Initial game state
-let cells = ['', '', '', '', '', '', '', '', ''];
-let currentPlayer = 'X';
-let result = document.querySelector('.result');
-let btns = document.querySelectorAll('.btn');
-let conditions = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-];
+console.log("Welcome to tic tac toe")
+let music = new Audio("music.mp3");
+let audioTurn = new Audio("ting.mp3");
+let gameover = new Audio("gameover.mp3");
+let turn="X";
+let go=false;
 
-// Function to handle player moves
-const ticTacToe = (element, index) => {
-    // Your game logic here
+const changeTurn = () =>{
+    return turn === "X"?"O":"X";
+}
 
-    /*
-    **Part 1: Winning Conditions (Add your code here)**
+const checkWin = ()=>{
+    let boxtexts = document.getElementsByClassName("boxtext");
 
-    1. Implement the logic to check for winning conditions using the 'conditions' array.
-    2. Display a winning message in the 'result' element when a player wins.
-    3. Disable all buttons after a win.
-    */
+    let wins=[
+        [0,1,2],
+        [3,4,5],
+        [6,7,8],
+        [0,3,6],
+        [1,4,7],
+        [2,5,8],
+        [0,4,8],
+        [2,4,6]
+    ];
+    wins.forEach(e=>{
 
-    // Your code to update the game state and check for a win
-    // ...
+        if(boxtexts[e[0]].innerText===boxtexts[e[1]].innerText && boxtexts[e[1]].innerText===boxtexts[e[2]].innerText && boxtexts[e[0]].innerText!==""){
+            document.querySelector(".info").innerText=boxtexts[e[0]].innerText+" Won";
+            go=true;
+            document.querySelector(".imgbox").getElementsByTagName("img")[0].style.width="200px";
+        }
 
-    // Your code to display the current player's turn
-    // ...
+    })
 
-    // Your code to handle button and cell interactions
-    // ...
-};
+}
 
-    /*
-    **Part 2: Reset Function (Add your code here)**
+//main logic
+let boxes=document.getElementsByClassName("box");
+Array.from(boxes).forEach(element=>{
+    let boxtext=element.querySelector(".boxtext");
+    element.addEventListener("click",()=>{
+        if(boxtext.innerText === ""){
+            boxtext.innerText=turn;
+            turn = changeTurn();
+            audioTurn.play();
+            checkWin();
+            if(!go){
+                document.getElementsByClassName("info")[0].innerText="Turn for "+turn;
+            }
+            
+        }
 
-    1. Implement a new function that resets the game to its initial state.
-    2. Ensure the 'cells', 'btns', and 'currentPlayer' variables are reset.
-    3. Update the 'result' element to indicate the current player's turn.
-    4. Re-enable all buttons for a new game.
-    */
+    })
+})
 
-// Function to reset the game
-const resetGame = () => {
-    // Your code to reset the game state
-    // ...
+reset.addEventListener("click",()=>{
+    let boxtexts=document.getElementsByClassName("boxtext");
+    Array.from(boxtexts).forEach(element=>{
+        element.innerText="";
+    });
+    turn="X";
+    document.getElementsByClassName("info")[0].innerText="Turn for "+turn;
+    go=false;
+    document.querySelector(".imgbox").getElementsByTagName("img")[0].style.width="0px";
 
-    // Your code to update the 'result' element
-    // ...
-
-    // Your code to re-enable buttons
-    // ...
-};
-
-btns.forEach((btn, i) => {
-    btn.addEventListener('click', () => ticTacToe(btn, i));
-});
-
-document.querySelector('#reset').addEventListener('click', resetGame);
+})
