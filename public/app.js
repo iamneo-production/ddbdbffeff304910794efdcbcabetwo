@@ -1,7 +1,5 @@
 console.log("Welcome to tic tac toe")
-let music = new Audio("music.mp3");
-let audioTurn = new Audio("ting.mp3");
-let gameover = new Audio("gameover.mp3");
+
 let turn="X";
 let go=false;
 
@@ -27,7 +25,7 @@ const checkWin = ()=>{
         if(boxtexts[e[0]].innerText===boxtexts[e[1]].innerText && boxtexts[e[1]].innerText===boxtexts[e[2]].innerText && boxtexts[e[0]].innerText!==""){
             document.querySelector(".info").innerText=boxtexts[e[0]].innerText+" Won";
             go=true;
-            document.querySelector(".imgbox").getElementsByTagName("img")[0].style.width="200px";
+           
         }
 
     })
@@ -35,7 +33,7 @@ const checkWin = ()=>{
 }
 
 //main logic
-let boxes=document.getElementsByClassName("box");
+let boxes=document.getElementsByClassName("btn");
 Array.from(boxes).forEach(element=>{
     let boxtext=element.querySelector(".boxtext");
     element.addEventListener("click",()=>{
